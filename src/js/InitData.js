@@ -4,7 +4,7 @@ export default function initData() {
   params.append('description', 'Поменять краску в ринтере, ком404');
 
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://localhost:7070/tickets');
+  xhr.open('POST', 'https://aleks-heroku.herokuapp.com/tickets');
   xhr.addEventListener('load', () => {
     if (xhr.status === 200) {
       console.log(xhr.responseText);
