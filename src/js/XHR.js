@@ -1,4 +1,7 @@
 /* eslint-disable class-methods-use-this */
+const server = 'https://aleks-heroku.herokuapp.com/';
+// const server = 'http://localhost:7070';
+
 export default class XHR {
   addTicket(name, description) {
     return new Promise((resolve) => {
@@ -7,7 +10,7 @@ export default class XHR {
       params.append('description', description);
 
       const xhr = new XMLHttpRequest();
-      xhr.open('POST', 'http://localhost:7070/tickets');
+      xhr.open('POST', `${server}/tickets`);
       xhr.addEventListener('load', () => {
         if (xhr.status === 200) {
           return resolve(xhr.responseText);
@@ -23,7 +26,7 @@ export default class XHR {
   getTickets() {
     return new Promise((resolve) => {
       const xhr = new XMLHttpRequest();
-      xhr.open('GET', 'http://localhost:7070/tickets');
+      xhr.open('GET', `${server}/tickets`);
       xhr.addEventListener('load', () => {
         if (xhr.status === 200) {
           const tickets = JSON.parse(xhr.responseText);
@@ -44,7 +47,7 @@ export default class XHR {
       params.append('description', description);
 
       const xhr = new XMLHttpRequest();
-      xhr.open('PUT', 'http://localhost:7070/tickets');
+      xhr.open('PUT', `${server}/tickets`);
       xhr.addEventListener('load', () => {
         if (xhr.status === 200) {
           return resolve(xhr.responseText);
@@ -63,7 +66,7 @@ export default class XHR {
       params.append('id', id);
 
       const xhr = new XMLHttpRequest();
-      xhr.open('GET', `http://localhost:7070/tickets?${params}`);
+      xhr.open('GET', `${server}/tickets?${params}`);
       xhr.addEventListener('load', () => {
         if (xhr.status === 200) {
           const tickets = xhr.responseText;
@@ -83,7 +86,7 @@ export default class XHR {
       params.append('id', id);
 
       const xhr = new XMLHttpRequest();
-      xhr.open('DELETE', `http://localhost:7070/tickets?${params}`);
+      xhr.open('DELETE', `${server}/tickets?${params}`);
       xhr.addEventListener('load', () => {
         if (xhr.status === 200) {
           const tickets = xhr.responseText;
@@ -104,7 +107,7 @@ export default class XHR {
       params.append('status', status);
 
       const xhr = new XMLHttpRequest();
-      xhr.open('PATCH', `http://localhost:7070/tickets?${params}`);
+      xhr.open('PATCH', `${server}/tickets?${params}`);
       xhr.addEventListener('load', () => {
         if (xhr.status === 200) {
           const tickets = xhr.responseText;
